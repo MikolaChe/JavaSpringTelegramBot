@@ -10,7 +10,6 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -92,7 +91,6 @@ class AlterImageBot extends TelegramLongPollingBot { // Собственно с�
             e.printStackTrace();
         }
     }
-
 }
 
 class PhotoEditor { // Общий класс для получения и обработки фото
@@ -127,7 +125,6 @@ class PhotoEditor { // Общий класс для получения и обр
     }
 }
 
-
 class GetDownloadedToBotImageURL { // Получаем ссылку на фото которое пользователь добавил в бота
     private AlterImageBot bot;
     private static final Logger logger = Logger.getLogger(GetDownloadedToBotImageURL.class.getName());
@@ -157,7 +154,6 @@ class GetDownloadedToBotImageURL { // Получаем ссылку на фот�
         return downloadedToBotImageURL;
     }
 
-
     private PhotoSize getLargestPhotoSize(List<PhotoSize> photoSizes) { // Это выбирает для скачивания файл максимального разрешения
         PhotoSize largestPhoto = null;
         int maxPhotoSize = 0;
@@ -172,7 +168,6 @@ class GetDownloadedToBotImageURL { // Получаем ссылку на фот�
         return largestPhoto;
     }
 }
-
 
 class ImageDownLoader {
     public File downloadImage(String imageUrl) {
@@ -200,4 +195,3 @@ class ImageDownLoader {
         return "image" + currentTimeMillis + "." + fileExtension;
     }
 }
-
