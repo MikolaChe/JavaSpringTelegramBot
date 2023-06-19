@@ -32,7 +32,7 @@ public class AlternativeImageBot {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
             AlterImageBot bot = new AlterImageBot();
             botsApi.registerBot(bot);
-            logger.info("Бот успешно запущен!");
+            logger.info("Bot is successfully started!");
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
@@ -55,7 +55,7 @@ public class AlternativeImageBot {
     }
 }
 
-class AlterImageBot extends TelegramLongPollingBot { // Собственно сам бот
+class AlterImageBot extends TelegramLongPollingBot { // the Bot as it is here
     @Override
     public String getBotUsername() {
         return "GalaxicoEditImageBot";
@@ -63,7 +63,7 @@ class AlterImageBot extends TelegramLongPollingBot { // Собственно с�
 
     @Override
     public String getBotToken() {
-        return "6065343169:AAGgonNp-HU5_j3CZu4jiK4r1uhur17Ouzw";
+        return "YOU_BOT_TOKEN";
     }
 
     @Override
@@ -93,7 +93,7 @@ class AlterImageBot extends TelegramLongPollingBot { // Собственно с�
     }
 }
 
-class PhotoEditor { // Общий класс для получения и обработки фото
+class PhotoEditor { // Class for changing photos
     private AlterImageBot bot;
 
     public PhotoEditor(AlterImageBot bot) {
@@ -125,7 +125,7 @@ class PhotoEditor { // Общий класс для получения и обр
     }
 }
 
-class GetDownloadedToBotImageURL { // Получаем ссылку на фото которое пользователь добавил в бота
+class GetDownloadedToBotImageURL { // getting image-link that user put to chat-bot
     private AlterImageBot bot;
     private static final Logger logger = Logger.getLogger(GetDownloadedToBotImageURL.class.getName());
 
@@ -144,7 +144,7 @@ class GetDownloadedToBotImageURL { // Получаем ссылку на фот�
             try {
                 org.telegram.telegrambots.meta.api.objects.File file = bot.execute(getFile);
                 String fileUrl = "https://api.telegram.org/file/bot" + bot.getBotToken() + "/" + file.getFilePath();
-                logger.info("Ссылка на загруженное изображение: " + fileUrl);
+                logger.info("Image link: " + fileUrl);
                 downloadedToBotImageURL = fileUrl;
 
             } catch (TelegramApiException e) {
@@ -154,7 +154,7 @@ class GetDownloadedToBotImageURL { // Получаем ссылку на фот�
         return downloadedToBotImageURL;
     }
 
-    private PhotoSize getLargestPhotoSize(List<PhotoSize> photoSizes) { // Это выбирает для скачивания файл максимального разрешения
+    private PhotoSize getLargestPhotoSize(List<PhotoSize> photoSizes) { // This part is getting for downloading file of the bigest resolution
         PhotoSize largestPhoto = null;
         int maxPhotoSize = 0;
 
