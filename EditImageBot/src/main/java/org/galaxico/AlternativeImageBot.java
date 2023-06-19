@@ -63,7 +63,7 @@ class AlterImageBot extends TelegramLongPollingBot { // the Bot as it is here
 
     @Override
     public String getBotToken() {
-        return "YOU_BOT_TOKEN";
+        return "YOUR_BOT_TOKEN";
     }
 
     @Override
